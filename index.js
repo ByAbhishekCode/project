@@ -83,3 +83,34 @@ ScrollTrigger.create({
     }
   },
 });
+
+// ABOUT SPLIT TYPES
+const splitTypes = document.querySelectorAll(".reveal-type");
+
+splitTypes.forEach((char) => {
+  const bg = char.dataset.bgColor;
+  const fg = char.dataset.fgColor;
+
+  const text = new SplitType(char, { types: 'chars' });
+
+  gsap.fromTo(
+    text.chars,
+    {
+      color: bg,
+    },
+    {
+      color: fg,
+      duration: 0.3,
+      stagger: 0.02,
+      scrollTrigger: {
+        trigger: char,
+        start: "top 83%",
+        end: "top 20%",
+        scrub: true,
+        markers: false,
+        toggleActions: "play play reverse reverse",
+      },
+    }
+  );
+});
+
